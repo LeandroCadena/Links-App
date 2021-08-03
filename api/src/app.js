@@ -35,6 +35,8 @@ app.post('/add', upload.single('image'), async (req, res) => {
     const linkCard = {
         name: req.body.name,
         url: req.body.url,
+        description: req.body.description,
+        isFavorite: req.body.isFavorite,
         img: {
             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
             contentType: 'image/png'
