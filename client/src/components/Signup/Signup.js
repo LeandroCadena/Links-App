@@ -59,16 +59,28 @@ export default function Signup() {
         <Container className={classes.container} maxWidth="m">
             <Box className={classes.box}>
                 <Avatar alt="Remy Sharp" src={PageIcon} className={classes.large} />
-                <h2 className={classes.title}>Links App</h2>
+                <h2 className={classes.title}>Register</h2>
                 <form className={classes.input} noValidate autoComplete="off">
                     <TextField id="standard-basic" color="secondary" label="Username" />
                     <TextField id="standard-basic" color="secondary" label="Password" />
                 </form>
-                <Button className={classes.button} variant="contained" color="secondary">
-                    LOGIN
+                <Button
+                    variant="contained"
+                    component="label"
+                    color="primary"
+                    className={classes.button}
+                >
+                    Upload File
+                    <input
+                        type="file"
+                        hidden
+                    />
                 </Button>
-                <h4>Don't have an account?
-                    <Link className='link'>Create</Link>
+                <Button className={classes.button} variant="contained" color="secondary">
+                    Create Account
+                </Button>
+                <h4>Do you already have an account?
+                    <Link to='/' className='link'>Login</Link>
                 </h4>
             </Box>
         </Container>

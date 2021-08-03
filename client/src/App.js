@@ -8,7 +8,7 @@ import Signup from './components/Signup/Signup';
 function App() {
   return (
     <Fragment>
-      <Route path='/' component={Signin} />
+      <Route exact path='/' component={Signin} />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/favorites' component={Favorites} />
     </Fragment>
