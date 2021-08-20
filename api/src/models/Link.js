@@ -1,7 +1,6 @@
-import { Schema, model } from 'mongoose';
+import mongoose from "mongoose";
 
-
-const LinkSchema = new Schema(
+const LinkSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -29,4 +28,4 @@ const LinkSchema = new Schema(
     { versionKey: false, timestamps: true }
 );
 
-export default model('Links', LinkSchema);
+export default mongoose.model('Links', LinkSchema);

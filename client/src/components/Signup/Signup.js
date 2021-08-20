@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '@fontsource/roboto';
 import PageIcon from '../../images/Link-icon.png'
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { API_HOST } from '../../utils/constants';
 
 const useStyles = makeStyles((theme) => ({
     large: {
@@ -54,6 +55,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Signup() {
     const classes = useStyles();
+    const [data, setData] = useState(
+        {
+            email: null,
+            password: null
+        }
+    )
+
+    const handleChange = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = async () => {
+        try {
+            const res = await axios.post(`${API_HOST}/auth/signup`, data);
+            console.log(res.data);
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
         <Container className={classes.container} maxWidth="m">
@@ -61,10 +84,10 @@ export default function Signup() {
                 <Avatar alt="Remy Sharp" src={PageIcon} className={classes.large} />
                 <h2 className={classes.title}>Register</h2>
                 <form className={classes.input} noValidate autoComplete="off">
-                    <TextField id="standard-basic" color="secondary" label="Username" />
-                    <TextField id="standard-basic" color="secondary" label="Password" />
+                    <TextField id="standard-basic" color="secondary" label="Email" value={data.username} name='email' onChange={handleChange} />
+                    <TextField id="standard-basic" color="secondary" label="Password" value={data.password} name='password' onChange={handleChange} />
                 </form>
-                <Button
+                {/* <Button
                     variant="contained"
                     component="label"
                     color="primary"
@@ -75,8 +98,8 @@ export default function Signup() {
                         type="file"
                         hidden
                     />
-                </Button>
-                <Button className={classes.button} variant="contained" color="secondary">
+                </Button> */}
+                <Button className={classes.button} variant="contained" color="secondary" onClick={() => handleSubmit()}>
                     Create Account
                 </Button>
                 <h4>Do you already have an account?
