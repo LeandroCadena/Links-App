@@ -75,8 +75,8 @@ export default function Signup() {
             axios.post(`${API_HOST}/auth/signup`, data),
             {
                 pending: 'pending',
-                success: 'success',
-                error: 'error'
+                success: `Check the email sent to ${data.email}`,
+                error: 'Mail already used'
             }
         )
     }

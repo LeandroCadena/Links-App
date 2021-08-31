@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <Fragment>
-      <ToastContainer theme="colored"/>
+      <ToastContainer theme="colored" pauseOnFocusLoss={false} position="top-center"/>
       <Route exact path='/' component={Signin} />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/favorites' component={Favorites} />

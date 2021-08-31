@@ -79,7 +79,7 @@ export default function Signin() {
                 "loggedUser",
                 JSON.stringify(res.data)
             );
-            history.pushState("/home");
+            history.push("/home");
         } catch (err) {
             console.log(err)
         }

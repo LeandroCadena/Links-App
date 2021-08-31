@@ -7,7 +7,7 @@ export function createToken(user) {
             id: user.id,
             email: user.email
         },
-        config.jwtSecret,
+        'token',
         { expiresIn: 86400 }
     );
 }
