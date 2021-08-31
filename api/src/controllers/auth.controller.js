@@ -33,7 +33,7 @@ export const signIn = async (req, res) => {
         password
     } = req.body;
 
-    const userFound = await Users.findOne({ email: email });
+    const userFound = await User.findOne({ email: email });
     if (!userFound) {
         return res.status(400).json({ message: 'The user does not exist' });
     }

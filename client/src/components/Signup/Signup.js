@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { API_HOST } from '../../utils/constants';
+import { ToastContainer, toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme) => ({
     large: {
@@ -70,12 +71,14 @@ export default function Signup() {
     }
 
     const handleSubmit = async () => {
-        try {
-            const res = await axios.post(`${API_HOST}/auth/signup`, data);
-            console.log(res.data);
-        } catch (err) {
-            console.log(err)
-        }
+        toast.promise(
+            axios.post(`${API_HOST}/auth/signup`, data),
+            {
+                pending: 'pending',
+                success: 'success',
+                error: 'error'
+            }
+        )
     }
 
     return (
@@ -84,7 +87,7 @@ export default function Signup() {
                 <Avatar alt="Remy Sharp" src={PageIcon} className={classes.large} />
                 <h2 className={classes.title}>Register</h2>
                 <form className={classes.input} noValidate autoComplete="off">
-                    <TextField id="standard-basic" color="secondary" label="Email" value={data.username} name='email' onChange={handleChange} />
+                    <TextField id="standard-basic" color="secondary" label="Email" value={data.email} name='email' onChange={handleChange} />
                     <TextField id="standard-basic" color="secondary" label="Password" value={data.password} name='password' onChange={handleChange} />
                 </form>
                 {/* <Button
