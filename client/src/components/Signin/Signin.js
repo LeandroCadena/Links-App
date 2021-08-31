@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { API_HOST } from '../../utils/constants';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme) => ({
     large: {
@@ -73,6 +74,7 @@ export default function Signin() {
     }
 
     const handleSubmit = async () => {
+        const loadingToast = toast.loading('Please wait...')
         try {
             const res = await axios.post(`${API_HOST}/auth/signin`, data);
             window.localStorage.setItem(
@@ -80,8 +82,10 @@ export default function Signin() {
                 JSON.stringify(res.data)
             );
             history.push("/home");
+            toast.update(loadingToast, { render: `Welcome`, type: toast.TYPE.SUCCESS, isLoading: false, autoClose: 5000 });
         } catch (err) {
-            console.log(err)
+            console.log(err);
+            toast.update(loadingToast, { render: `Wrong email or password`, type: toast.TYPE.ERROR, isLoading: false, autoClose: 5000 });
         }
     }
 

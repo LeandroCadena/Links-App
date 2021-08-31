@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { API_HOST } from '../../utils/constants';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme) => ({
     large: {

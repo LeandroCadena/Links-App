@@ -27,8 +27,8 @@ export default function Navbar() {
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
             <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
             <BottomNavigationAction label="Sign out" icon={<ExitToAppIcon />} />
         </BottomNavigation>
     );
